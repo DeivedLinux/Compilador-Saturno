@@ -3,15 +3,16 @@
 
 %}
 
-ESPACO [ \t]
-DIGITO [0-9]
-LETRA [A-Za-z_]
+TAB [ \t]
+DIGIT [0-9]
+LETTER [A-Za-z_]
+HEXA 0x[0-9A-Fa-f]+
 
-DELIM {ESPACO}+
-NUM {DIGITO}+
+DELIM {TAB}+
+NUM {DIGIT}+
 REAL {NUM}+("."{NUM}+)?
-CHAR \'({LETRA}|{NUM})\'
-ID {LETRA}({LETRA}|{NUM})*
+CHAR \'({LETTER}|{NUM})\'
+ID {LETTER}({LETTER}|{NUM})*
 
 %%
 
@@ -19,9 +20,11 @@ ID {LETRA}({LETRA}|{NUM})*
 
 {DELIM} 	{}
 
-"main"		{return TK_MAIN;}
+"main"			{return TK_MAIN;}
+"Integer"		{return TK_TIPO_INT;}
+"Real"			{return TK_TIPO_REAL;}
+"String"		{return TK_TIPO_STRING;}
 
-"int"		{return TK_TIPO_INT;}
 
 [(){}[\];,]	{ return *yytext; }
 

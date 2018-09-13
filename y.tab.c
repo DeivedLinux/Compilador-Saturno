@@ -1558,7 +1558,7 @@ int num_temp = 0;
 
 string genTemp()
 {
-	return "temp" + to_string(num_temp++);
+	return "temp" + string::to_string(num_temp++);
 }
 
 int main( int argc, char* argv[] )

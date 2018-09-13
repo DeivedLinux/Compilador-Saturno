@@ -97,10 +97,11 @@ E 			: E '/' E
 
 int yyparse();
 
-int num_temp = 0;
+
 
 string genTemp()
 {
+	static int num_temp = 0;
 	return "temp" + to_string(num_temp++);
 }
 
